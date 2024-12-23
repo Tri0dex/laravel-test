@@ -1,4 +1,12 @@
-@servers(['production' => ['germanstar@77.222.40.238']])
+@setup
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+@endsetup
+
+@servers([
+    'production' => [env('DEPLOY_USER').'@'.env('DEPLOY_HOST')],
+    'localhost' => ['127.0.0.1']
+])
 
 @task('deploy', ['on' => 'production'])
     cd /home/g/germanstar/laravel-test
@@ -18,4 +26,8 @@
 
     php artisan up
     echo "Done"
+@endtask
+
+@task('local', ['on' => 'localhost'])
+    echo 'local test'
 @endtask

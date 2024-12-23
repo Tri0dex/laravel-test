@@ -7,5 +7,7 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::get('/', function () {
-    dump('Test laravel app');
+    //dump('Test laravel app');
+    dump(env('DEPLOY_USER'));
+    dump(env('DEPLOY_HOST'));
 });
