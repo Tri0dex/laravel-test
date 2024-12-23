@@ -1,6 +1,8 @@
 @setup
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
+
+    $test = mt_rand();
 @endsetup
 
 @servers([
@@ -29,5 +31,5 @@
 @endtask
 
 @task('local', ['on' => 'localhost'])
-    echo 'local test'
+    echo 'local test: {{ $test }}'
 @endtask
